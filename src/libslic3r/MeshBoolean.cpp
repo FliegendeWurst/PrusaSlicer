@@ -147,12 +147,12 @@ template<class _Mesh> TriangleMesh cgal_to_triangle_mesh(const _Mesh &cgalmesh)
     const auto &vertices = cgalmesh.vertices();
     int vsize = int(vertices.size());
 
-    for (auto &vi : vertices) {
+    for (auto vi : vertices) {
         auto &v = cgalmesh.point(vi); // Don't ask...
         its.vertices.emplace_back(to_vec3f(v));
     }
 
-    for (auto &face : faces) {
+    for (auto face : faces) {
         auto vtc = cgalmesh.vertices_around_face(cgalmesh.halfedge(face));
 
         int i = 0;
